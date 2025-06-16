@@ -96,7 +96,7 @@ if uploaded_file is not None:
     
 
     if target_col and ids:
-        iqr_df = pd.read_csv('./iqr_df.csv')
+        iqr_df = pd.read_csv('./IQR_DATA/iqr_df.csv')
         l = iqr_df.iloc[ids-1]['lower']
         u = iqr_df.iloc[ids-1]['upper']
 
@@ -104,7 +104,7 @@ if uploaded_file is not None:
 
         # 각 feature에 대해 이상치 처리
         for feature,iqr_features in zip(features,iqr_features):
-            feature_iqr = pd.read_csv(f'./{iqr_features}.csv')
+            feature_iqr = pd.read_csv(f'./IQR_DATA/{iqr_features}.csv')
             mi = feature_iqr.iloc[ids-1]['Min']
             ma = feature_iqr.iloc[ids-1]['Max']
             avg = feature_iqr.iloc[ids-1]['Avg']
