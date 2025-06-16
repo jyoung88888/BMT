@@ -1,7 +1,57 @@
 # 태양광 발전량 예측 대시보드
 
 ## 프로젝트 개요
-이 프로젝트는 태양광 발전량을 예측하고 시각화하는 대시보드 애플리케이션입니다.
+이 프로젝트는 태양광 발전량을 예측하고 시각화하는 대시보드 애플리케이션
+
+## 프로젝트 구조
+```
+BMT/
+├── Train/               # 모델 학습 과정
+├── Dashboard.py         # 예측 대시보드
+├── feature_scaler/      # 특징 정규화 모델
+├── target_scaler/       # 타겟 정규화 모델
+├── prophet/             # 학습된 Prophet 모델
+└── IQR_data/            # 이상치 처리 기준값
+```
+
+## 모델 학습 과정 (./Train/bmt_자동화.ipynb)
+
+### 1. 데이터 전처리
+- 태양광 발전량 데이터 로드
+- 시간 데이터 변환
+- 결측값 및 이상치 처리
+- 특징(feature) 선택:
+  - Ampe_R, Ampe_S, Ampe_T
+  - 일사량(MJ/m2)
+  - 기온(°C)
+
+### 2. Prophet 모델 학습 
+- Prophet 모델 초기화 및 설정
+- 시계열 데이터 학습
+- 모델 파라미터 최적화
+- 학습된 모델 저장 (.pkl 파일)
+
+## 예측 과정 (./Inference Dashboard/Dashboard.py)
+
+### 1. 데이터 로드 및 전처리
+- 사용자 업로드 데이터 로드
+- 시간 데이터 변환
+- 결측값/이상치 처리
+
+### 2. 모델 로드
+- 학습된 Prophet 모델 로드
+- 특징 정규화 모델 로드
+- 타겟 정규화 모델 로드
+
+### 3. 예측 수행
+- 입력 데이터 정규화
+- Prophet 모델로 예측
+- 예측값 역정규화
+
+### 4. 결과 시각화
+- 실제값 vs 예측값 비교
+- MAPE 성능 평가
+- 인터랙티브 차트 표시
 
 ## 환경 설정
 
@@ -13,6 +63,7 @@ pip install numpy
 pip install matplotlib
 pip install scikit-learn
 pip install streamlit-echarts
+pip install prophet
 ```
 
 ### Python 버전
@@ -53,16 +104,6 @@ pip install streamlit-echarts
 2. 터미널에서 다음 명령어 실행:
 ```bash
 streamlit run Dashboard.py
-```
-
-## 파일 구조
-```
-BMT/
-├── Dashboard.py          # 메인 대시보드 애플리케이션
-├── feature_scaler/       # 특징 정규화 모델
-├── target_scaler/        # 타겟 정규화 모델
-├── prophet/             # Prophet 모델
-└── iqr_df_2.csv        # 이상치 처리 기준값
 ```
 
 ## 주의사항

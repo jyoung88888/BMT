@@ -22,19 +22,20 @@ pip install -r requirements.txt
 3. 필요한 디렉토리 구조 확인
 ```
 .
-├── Dashboard.py
-├── requirements.txt
-├── iqr_df.csv
-├── feature_scaler/
-├── target_scaler/
-├── prophet/
-└── output/
+├── Dashboard.py              # 대쉬보드 실행 스크립트 
+├── requirements.txt          # 환경 패키지 
+├── IQR_data                  # 이상치 기준 데이터
+├── feature_scaler/           # 피쳐 스케일링 파일 
+├── target_scaler/            # 타겟 스케일링 파일 
+├── prophet/                  # 예측 모델 (prophet)
+└── output/                   # 예측 후 저장 경로 
 ```
 
 ## 사용 방법
 
 1. 대시보드 실행
 ```bash
+cd Inference Dashboard
 streamlit run Dashboard.py
 ```
 
