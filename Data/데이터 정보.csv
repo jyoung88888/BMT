@@ -1,0 +1,18 @@
+변수,설명,단위,타입
+id,고유 식별자,,int
+ymdhms,날짜시간,,date
+YEAR,연도,,int
+MONTH,월,,int
+DAY,일,,int
+PV_Volt,태양광 패널 전압,,float
+PV_Ampe,태양광 패널 전류,,float
+Volt_R,R상 전압,,float
+Volt_S,S상 전압,,float
+Volt_T,T상 전압,,float
+Ampe_R,R상 전류,,float
+Ampe_S,S상 전류,,float
+Ampe_T,T상 전류,,float
+Frequency,주파수,Hz,float
+Today_Generate,일일 누적 발전량,kwh,float
+Accumulated_Generation,전체 누적 발전량,mwh,float
+generate_gap,1시간 발전량,kwh,float
